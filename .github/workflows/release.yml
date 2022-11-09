@@ -7,24 +7,16 @@ jobs:
   package-and-publish: # make sure the action works on a clean machine without building
     runs-on: ubuntu-latest
     steps:
+      - name: echosomething
+        run: echo releaseid from payload is  ${{ github.event.payload.release.id }}
+             echo releaseid from client payload is ${{ github.event.client_payload.release.id }}
+             echo tag from payload is ${{ github.event.payload.release.tag_name }} 
+             echo tag from client payload is 	${{ github.event.client_payload.release.tag_name }} 
+        
       - name: Checking out!
         uses: actions/checkout@v3
         with:
           ref: ${{ github.event.payload.release.tag_name}}
-#       - name: Use Node.js
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: '12.x'
-
-#       - run: npm install
-#       - run: npm run build --if-present
-
-#       Job for Minify-JS
-#       - name: Minify-JS Action
-#         uses: jossydevers/minify-js@v1.0.0
-#         with:
-#           directory: 'src/component.js' # (OPTIONAL)
-#           output: 'minify/src/' # (OPTIONAL)
         
       - name: Publish action 
         uses: actions-on-packages/package-action@0.4.1
