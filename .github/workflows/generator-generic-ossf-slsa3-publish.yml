@@ -38,6 +38,8 @@ jobs:
             echo "artifact1" > artifact1
             echo "artifact2" > artifact2
             echo runner os is ${{runner.os}}
+            echo runner name is ${runner.name}}
+            echo runner arch is ${{runner.arch}}
 
       # ========================================================
       #
